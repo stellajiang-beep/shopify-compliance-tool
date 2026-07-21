@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Compliance Manufacturer",
+    "type": "compliance_manufacturer",
+    "fieldDefinitions": [
+      {
+        "key": "manufacturer_name",
+        "name": "Manufacturer Name",
+        "type": "single_line_text_field",
+        "required": true
+      },
+      {
+        "key": "manufacturer_address",
+        "name": "Manufacturer Address",
+        "type": "multi_line_text_field",
+        "required": true
+      }
+    ]
+  },
+  {
+    "name": "Compliance Profile",
+    "type": "compliance_profile",
+    "fieldDefinitions": [
+      {
+        "key": "model_number",
+        "name": "Model Number",
+        "type": "single_line_text_field",
+        "required": true
+      },
+      {
+        "key": "safety_warning_text",
+        "name": "Safety warning text",
+        "type": "multi_line_text_field",
+        "required": true
+      },
+      {
+        "key": "safety_warning_image",
+        "name": "Safety warning image",
+        "type": "file_reference",
+        "required": true
+      },
+      {
+        "key": "trademark",
+        "name": "Trademark",
+        "type": "single_line_text_field",
+        "required": true
+      }
+    ]
+  }
+]
