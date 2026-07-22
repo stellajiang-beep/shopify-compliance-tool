@@ -1,6 +1,25 @@
 console.log("Compliance content loaded");
 
+let metaobjectTemplate = null;
 
+
+fetch(
+    chrome.runtime.getURL(
+        "config/metaobject-definition-template.json"
+    )
+)
+    .then(res => res.json())
+    .then(data => {
+
+        metaobjectTemplate = data;
+
+        console.log(
+            "🔥 Metaobject模板加载成功:",
+            data
+        );
+
+
+    });
 // 注入 page-inject.js
 const script = document.createElement("script");
 
@@ -31,6 +50,11 @@ chrome.runtime.onMessage.addListener(
             message
         );
 
+        window.postMessage(
+            message,
+            "*"
+        );
+
 
         if (message.type === "PAGE_TEST") {
 
@@ -53,7 +77,8 @@ chrome.runtime.onMessage.addListener(
             window.postMessage(
                 {
                     type: "CREATE_METAOBJECT",
-                    payload: message.payload
+                    payload: message.payload,
+                    template: metaobjectTemplate
                 },
                 "*"
             );
@@ -61,6 +86,29 @@ chrome.runtime.onMessage.addListener(
 
             console.log(
                 "已经转发给 page-inject"
+            );
+
+
+        }
+        if (
+            message.type === "CREATE_METAFIELD"
+        ) {
+
+
+            window.postMessage(
+                {
+
+                    type: "CREATE_METAFIELD",
+
+                    payload: message.payload
+
+                },
+                "*"
+            );
+
+
+            console.log(
+                "🔥 已转发创建Metafield任务"
             );
 
 

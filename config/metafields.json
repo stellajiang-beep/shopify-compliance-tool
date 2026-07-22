@@ -1,0 +1,71 @@
+[
+  {
+    "name": "EU Responsible Person Address",
+    "namespace": "custom",
+    "key": "eu_responsible_person_address",
+    "type": "multi_line_text_field"
+  },
+  {
+    "name": "Manufacturer Name",
+    "namespace": "custom",
+    "key": "manufacturer_name",
+    "type": "single_line_text_field"
+  },
+  {
+    "name": "EU Responsible Person Name",
+    "namespace": "custom",
+    "key": "eu_responsible_person_name",
+    "type": "single_line_text_field"
+  },
+  {
+    "name": "Manufacturer Contact Url",
+    "namespace": "custom",
+    "key": "manufacturer_contact_url",
+    "type": "single_line_text_field"
+  },
+  {
+    "name": "EU Responsible Person Contact Email",
+    "namespace": "custom",
+    "key": "eu_responsible_person_contact_email",
+    "type": "single_line_text_field"
+  },
+  {
+    "name": "Trademark",
+    "namespace": "custom",
+    "key": "trademark",
+    "type": "single_line_text_field"
+  },
+  {
+    "name": "Safety Warning Text",
+    "namespace": "custom",
+    "key": "safety_warning_text",
+    "type": "multi_line_text_field"
+  },
+  {
+    "name": "Safety Warning Image",
+    "namespace": "custom",
+    "key": "safety_warning_image",
+    "type": "file_reference"
+  },
+  {
+    "name": "Compliance Manufacturer",
+    "namespace": "custom",
+    "key": "compliance_manufacturer",
+    "type": "metaobject_reference",
+    "reference": "compliance_manufacturer"
+  },
+  {
+    "name": "Compliance Profile",
+    "namespace": "custom",
+    "key": "compliance_profile",
+    "type": "metaobject_reference",
+    "reference": "compliance_profile"
+  },
+  {
+    "name": "Model Number",
+    "namespace": "custom",
+    "key": "model_number",
+    "type": "single_line_text_field"
+  }
+  
+]

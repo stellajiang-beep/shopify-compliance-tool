@@ -1,0 +1,15 @@
+{
+ "operationName":"MetaobjectCreate",
+ "variables":{
+   "input":{
+     "handle":"",
+     "type":"",
+     "fields":[],
+     "capabilities":{
+       "publishable":{
+          "status":"ACTIVE"
+       }
+     }
+   }
+ }
+}

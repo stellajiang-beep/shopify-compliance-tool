@@ -1,6 +1,5 @@
 import metaobjects from "../config/metaobjects.json";
 
-
 export function generateMetaobjectDefinitionInput(){
 
     return metaobjects.map(metaobject => {
