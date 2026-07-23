@@ -276,7 +276,29 @@ window.addEventListener(
 
         }
 
+        if (
+            event.data.type === "CREATE_METAOBJECT"
+        ) {
 
+            console.log(
+                "🔥 收到Metaobject创建任务:",
+                event.data
+            );
+
+            const metaobjects =
+                event.data.payload;
+
+            for (
+                const item of metaobjects
+            ) {
+
+                await createMetaobjectDefinition(
+                    item
+                );
+
+            }
+
+        }
 
         if (
             event.data.type === "CREATE_METAFIELD"
@@ -320,11 +342,100 @@ window.addEventListener(
 
         }
 
+        if (event.data.type === "EXPORT_MANUFACTURER_MAP") {
+
+            console.log("收到 EXPORT_MANUFACTURER_MAP");
+
+            exportManufacturerMap();
+
+        }
+
     }
 
 );
 
+// ==============================
+// 创建 Metaobject Definition
+// ==============================
 
+async function createMetaobjectDefinition(
+    definition
+) {
+
+    console.log(
+        "🔥 准备创建Metaobject:",
+        definition
+    );
+
+    if (
+        !window.lastMetaobjectRequest
+    ) {
+
+        console.log(
+            "❌ 没有Metaobject模板"
+        );
+
+        return;
+
+    }
+
+    // 复制 Shopify 原始模板
+    const body =
+        JSON.parse(
+            window.lastMetaobjectRequest.body
+        );
+
+    // 使用模板，只替换需要变化的字段
+    body.variables.input.name =
+        definition.name;
+
+    body.variables.input.type =
+        definition.type;
+
+    body.variables.input.fieldDefinitions =
+        definition.fieldDefinitions;
+    body.variables.input.displayNameKey =
+        definition.displayNameKey;
+    console.log(
+        body.variables.input.displayNameKey
+    );
+    console.log(
+        "🔥 最终发送Metaobject:",
+        body
+    );
+
+    window.isCreating = true;
+
+    const response =
+        await fetch(
+            window.lastMetaobjectRequest.url,
+            {
+                method: "POST",
+
+                headers:
+                    window.lastMetaobjectRequest.headers,
+
+                body:
+                    JSON.stringify(body)
+            }
+        );
+
+    window.isCreating = false;
+
+    console.log(
+        "🔥 HTTP状态:",
+        response.status
+    );
+
+    const result =
+        await response.text();
+
+    console.log(
+        "🔥 Shopify返回:",
+        result
+    );
+
+}
 // ==============================
 // 创建 Metafield Definition
 // ==============================
@@ -577,6 +688,10 @@ async function createMetafieldDefinition(
 
 async function createMetaobjectEntries(entries) {
 
+    window.manufacturerMap = {};
+
+    const manufacturerMap = window.manufacturerMap;
+
     for (const entry of entries) {
 
         if (
@@ -592,15 +707,16 @@ async function createMetaobjectEntries(entries) {
         }
 
 
-        const body =
-            JSON.parse(
-                window.lastMetaobjectEntryRequest.body
-            );
+        const body = JSON.parse(window.lastMetaobjectEntryRequest.body);
 
+        console.log(JSON.stringify(body, null, 2));
+        console.log(body.variables.input);
 
         body.variables.input.type =
             entry.type;
 
+        body.variables.input.handle =
+            entry.handle;
 
         body.variables.input.fields =
             Object.entries(entry.fields)
@@ -654,6 +770,9 @@ async function createMetaobjectEntries(entries) {
                     .id;
 
 
+            manufacturerMap[
+                entry.fields.manufacturer_name
+            ] = id;
             console.log(
                 "✅ Metaobject ID:",
                 id
@@ -664,5 +783,47 @@ async function createMetaobjectEntries(entries) {
 
     }
 
+    console.log(
+        "📦 Manufacturer Map:",
+        manufacturerMap
+    );
+
+    exportManufacturerMap();
 }
 
+function exportManufacturerMap() {
+
+    console.count("exportManufacturerMap");
+
+    if (!window.manufacturerMap || Object.keys(window.manufacturerMap).length === 0) {
+        alert("没有可导出的 Manufacturer Map");
+        return;
+    }
+
+    const blob = new Blob(
+        [
+            JSON.stringify(
+                window.manufacturerMap,
+                null,
+                2
+            )
+        ],
+        {
+            type: "application/json"
+        }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "manufacturer-map.json";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    console.log("✅ manufacturer-map.json 已导出");
+
+}

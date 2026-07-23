@@ -1,0 +1,25 @@
+{
+  "name": "shopify-compliance-tool",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000s\u0000h\u0000o\u0000p\u0000i\u0000f\u0000y\u0000-\u0000c\u0000o\u0000m\u0000p\u0000l\u0000i\u0000a\u0000n\u0000c\u0000e\u0000-\u0000t\u0000o\u0000o\u0000l\u0000\r\u0000 \u0000",
+  "main": "background.js",
+  "scripts": {
+  "build": "esbuild src/page-inject.js --bundle --outfile=dist/page-inject.js",
+  "watch": "esbuild src/page-inject.js --bundle --outfile=dist/page-inject.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stellajiang-beep/shopify-compliance-tool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/stellajiang-beep/shopify-compliance-tool/issues"
+  },
+  "homepage": "https://github.com/stellajiang-beep/shopify-compliance-tool#readme",
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}

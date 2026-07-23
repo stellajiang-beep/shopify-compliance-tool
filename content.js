@@ -24,7 +24,7 @@ fetch(
 const script = document.createElement("script");
 
 script.src = chrome.runtime.getURL(
-    "page-inject.js"
+    "dist/page-inject.js"
 );
 
 console.log(
@@ -113,6 +113,7 @@ chrome.runtime.onMessage.addListener(
 
 
         }
+
 
         return true;
 

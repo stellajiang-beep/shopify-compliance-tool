@@ -20,7 +20,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "page-inject.js",
+        "dist/page-inject.js",
         "config/*.json"
       ],
       "matches": [

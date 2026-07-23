@@ -5,7 +5,7 @@ let metaobjects = [];
 
 fetch(
     chrome.runtime.getURL(
-        "config/metaobjects.json"
+        "config/data/metaobjects.json"
     )
 )
 .then(response => response.json())
@@ -105,12 +105,6 @@ chrome.runtime.onMessage.addListener(
 
         }
 
-
-
-
-
-
-
         // ==========================
         // 保存 Metaobject 请求模板
         // ==========================
@@ -204,7 +198,7 @@ chrome.runtime.onMessage.addListener(
 
             fetch(
                 chrome.runtime.getURL(
-                    "config/metafields.json"
+                    "config/data/metafields.json"
                 )
             )
             .then(res => res.json())

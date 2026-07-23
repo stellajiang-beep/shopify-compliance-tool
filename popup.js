@@ -35,7 +35,7 @@ document
             const response =
                 await fetch(
                     chrome.runtime.getURL(
-                        "config/metaobjects.json"
+                        "config/data/metaobjects.json"
                     )
                 );
 
@@ -78,6 +78,12 @@ document
     .onclick = async () => {
 
 
+         const entries = await fetch(
+            chrome.runtime.getURL(
+                "config/data/metaobject_entries.json"
+            )
+        ).then(res => res.json());
+
         const [tab] = await chrome.tabs.query({
             active: true,
             currentWindow: true
@@ -88,19 +94,25 @@ document
             tab.id,
             {
                 type: "CREATE_METAOBJECT_ENTRY",
-                payload: [
-                    {
-                        type: "compliance_manufacturer",
-                        fields: {
-                            manufacturer_name:
-                                "TEST Manufacturer",
-
-                            manufacturer_address:
-                                "TEST ADDRESS"
-                        }
-                    }
-                ]
+                payload: entries
             }
         );
 
+        
+
     };
+
+    document
+    .getElementById("export-manufacturer-map")
+    .addEventListener("click", async () => {
+
+        const [tab] = await chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        });
+
+        chrome.tabs.sendMessage(tab.id, {
+            type: "EXPORT_MANUFACTURER_MAP"
+        });
+
+    });

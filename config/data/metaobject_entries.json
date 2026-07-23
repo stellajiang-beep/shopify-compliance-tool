@@ -1,0 +1,90 @@
+[
+  {
+    "type": "compliance_manufacturer",
+    "handle": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "fields": {
+      "manufacturer_name": "Zhiyue Youchuang Technology (Suzhou) Co., Ltd.",
+      "manufacturer_address": "Room 552, Unit 5010, No.282 Dongping Street, Suzhou Industrial Park, Suzhou Area, China (Jiangsu) Pilot Free Trade Zone"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "tsingting-intelligent-tech-suzhou-co-ltd",
+    "fields": {
+      "manufacturer_name": "TsingTing Intelligent Tech(Suzhou) Co., Ltd.",
+      "manufacturer_address": "Room 302, 3rd Floor, R&D Building 9 (Building 9), No.1999 Songjia Road, Guoxiang Street, Wu Zhong Economic Development Zone, Suzhou City, Jiangsu Province, P.R. China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "shenzhen-televi-intelligent-technology-co-ltd",
+    "fields": {
+      "manufacturer_name": "Shenzhen Televi Intelligent Technology Co., Ltd.",
+      "manufacturer_address": "No. 11-A, Building 3, Zhongke Research and Development Park, GaoXing South 1st Road, High-tech Zone Community, Yuehai Street, Nanshan District, Shenzhen City, Guangdong Province, China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "quilo-technology-jiaxing-co-ltd",
+    "fields": {
+      "manufacturer_name": "Quilo Technology (Jiaxing) Co., Ltd.",
+      "manufacturer_address": "Room 199, No. 2176 Fanggong Road, Dongzha Street, Nanhu District, Jiaxing City, Zhejiang Province, PR.China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "nexchip-puretech-nanjing-co-ltd",
+    "fields": {
+      "manufacturer_name": "NexChip PureTech (Nanjing) Co., Ltd.",
+      "manufacturer_address": "Room 1005 Block A, Kechuang Building No.1, Futian Road Lishui Economic Development Zone Nanjing, Jiangsu, China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "nanjing-ice-krypton-technology-co-ltd",
+    "fields": {
+      "manufacturer_name": "Nanjing Ice Krypton Technology Co., Ltd",
+      "manufacturer_address": "Room 1005, Kechuang Building A, Futian 1 Road, Lishui District, Nanjing 211200 Jiangsu, P.R. China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "kutting-technology-suzhou-co-ltd",
+    "fields": {
+      "manufacturer_name": "Kutting Technology (Suzhou) Co., Ltd.",
+      "manufacturer_address": "Room 1182, Building 3, No. 288 Jiushenggang Road, Guoxiang Street, Wuzhong District Economic Development Zone, Suzhou City, Jiangsu Province, P.R. China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "kong-qi-ling-dong-technology-suzhou-co-ltd",
+    "fields": {
+      "manufacturer_name": "KONG QI LING DONG Technology (Suzhou) Co., Ltd.",
+      "manufacturer_address": "Room 508, Unit 5011, No. 282 Dongping Street, Suzhou Industrial Park, Suzhou Area, China (Jiangsu) Pilot Free Trade Zone"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "dreame-innovation-technology-suzhou-co-ltd",
+    "fields": {
+      "manufacturer_name": "Dreame Innovation Technology (Suzhou) Co.,Ltd.",
+      "manufacturer_address": "Unit 1&2&3, Building 8, No.1688, Songwei Road, Guoxiang Street, Economic Development Zone, Wuzhong District, Suzhou, Jiangsu Province, P.R.China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "chuangqian-mingjing-suzhou-technology-co-ltd",
+    "fields": {
+      "manufacturer_name": "Chuangqian Mingjing (Suzhou) Technology Co., Ltd.",
+      "manufacturer_address": "Room 1001, 10th Floor, Zhihui Valley Park Taihu Software Park, 1451 Wuzhong Avenue Yuexi Street, Wuzhong Economic and Technological Development Zone Suzhou, Jiangsu Province China"
+    }
+  },
+  {
+    "type": "compliance_manufacturer",
+    "handle": "dreame-trading-tianjin-co-ltd",
+    "fields": {
+      "manufacturer_name": "Dreame Trading (Tianjin) Co., Ltd.",
+      "manufacturer_address": "Room 2112-1-1, South District, Finance and Trade Center, No.6975 Yazhou Road, Dongjiang Bonded Port Area, Tianjin Pilot Free Trade Zone, Tianjin, China"
+    }
+  }
+]
