@@ -1,4 +1,4 @@
-async function createMetaobjectEntries(entries) {
+export async function createMetaobjectEntries(entries) {
 
     window.manufacturerMap = {};
 
@@ -27,7 +27,8 @@ async function createMetaobjectEntries(entries) {
         body.variables.input.type =
             entry.type;
 
-        body.variables.input.handle = entry.handle;
+        body.variables.input.handle =
+            entry.handle;
 
         body.variables.input.fields =
             Object.entries(entry.fields)
@@ -82,7 +83,7 @@ async function createMetaobjectEntries(entries) {
 
 
             manufacturerMap[
-                entry.handle
+                entry.fields.manufacturer_name
             ] = id;
             console.log(
                 "✅ Metaobject ID:",
@@ -99,6 +100,7 @@ async function createMetaobjectEntries(entries) {
         manufacturerMap
     );
 
+    
     exportManufacturerMap();
 }
 

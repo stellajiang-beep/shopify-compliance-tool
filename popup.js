@@ -102,17 +102,4 @@ document
 
     };
 
-    document
-    .getElementById("export-manufacturer-map")
-    .addEventListener("click", async () => {
-
-        const [tab] = await chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        });
-
-        chrome.tabs.sendMessage(tab.id, {
-            type: "EXPORT_MANUFACTURER_MAP"
-        });
-
-    });
+   
