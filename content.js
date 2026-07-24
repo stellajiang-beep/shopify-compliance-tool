@@ -113,6 +113,23 @@ chrome.runtime.onMessage.addListener(
 
 
         }
+        if (
+            message.type === "CREATE_METAFIELD"
+        ) {
+
+            window.postMessage(
+                {
+                    type: "CREATE_METAFIELD",
+                    payload: message.payload
+                },
+                "*"
+            );
+
+            console.log(
+                "🔥 已转发创建Metafield任务"
+            );
+
+        }
 
 
         return true;

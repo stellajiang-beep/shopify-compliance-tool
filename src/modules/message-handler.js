@@ -1,6 +1,7 @@
 import { createMetaobjectDefinition } from "./create-metaobject.js";
 import { createMetafieldDefinition } from "./create-metafield.js";
 import { createMetaobjectEntries } from "./create-metaobject-entry.js";
+import { setProductMetafields } from "./set-product-metafields.js";
 
 export function initMessageHandler() {
     window.addEventListener(
@@ -58,6 +59,20 @@ export function initMessageHandler() {
             if (event.data.type === "EXPORT_MANUFACTURER_MAP") {
                 console.log("收到 EXPORT_MANUFACTURER_MAP");
                 exportManufacturerMap();
+            }
+            if (
+                event.data.type === "SET_PRODUCT_METAFIELDS"
+            ) {
+
+                console.log(
+                    "🔥 收到 Product Metafields 任务:",
+                    event.data
+                );
+
+                await setProductMetafields(
+                    event.data.payload
+                );
+
             }
         }
     );

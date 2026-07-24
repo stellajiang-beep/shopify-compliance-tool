@@ -1,105 +1,80 @@
-
 console.log("🔥 popup.js loaded");
+
+/**
+ * 统一发送消息
+ */
+function send(type, payload = null) {
+    chrome.runtime.sendMessage({
+        type,
+        payload
+    });
+}
+
+/**
+ * 测试连接
+ */
 document
-    .getElementById("test")
+    .getElementById("test-connection")
     .addEventListener("click", () => {
 
-
-        console.log("popup clicked");
-
+        console.log("🔥 Test Connection");
 
         chrome.runtime.sendMessage(
             {
                 type: "TEST_CONNECTION"
             },
             (response) => {
+                console.log("background response:", response);
+            }
+        );
 
-                console.log(
-                    "background response:",
-                    response
-                );
+    });
 
-            });
+/**
+ * 创建 Metaobject
+ */
+document
+    .getElementById("create-metaobject")
+    .addEventListener("click", () => {
 
+        console.log("🔥 Create Metaobject");
+
+        send("CREATE_METAOBJECT");
+
+    });
+
+/**
+ * 创建 Product Metafield
+ */
+document
+    .getElementById("create-metafield")
+    .addEventListener("click", () => {
+
+        console.log("🔥 Create Product Metafield");
+
+        send("CREATE_METAFIELD");
+
+    });
+
+/**
+ * 创建 Metaobject Entry
+ */
+document
+    .getElementById("create-metaobject-entry")
+    .addEventListener("click", () => {
+
+        console.log("🔥 Create Metaobject Entry");
+
+        send("CREATE_METAOBJECT_ENTRY");
 
     });
 
 document
-    .getElementById("createMetaobject")
-    .addEventListener(
-        "click",
-        async () => {
+    .getElementById("set-product-metafields")
+    .addEventListener("click", () => {
 
-            console.log("🔥 点击创建按钮");
+        console.log("🔥 Set Product Metafields");
 
-            const response =
-                await fetch(
-                    chrome.runtime.getURL(
-                        "config/data/metaobjects.json"
-                    )
-                );
+        send("SET_PRODUCT_METAFIELDS");
 
-
-            const metaobjects =
-                await response.json();
-            chrome.runtime.sendMessage({
-
-                type: "CREATE_METAOBJECT",
-                payload: metaobjects
-
-            });
-
-
-        });
-
-document
-    .getElementById("createMetafield")
-    .addEventListener(
-        "click",
-        () => {
-
-
-            console.log(
-                "🔥 点击创建 Product Metafield"
-            );
-
-
-            chrome.runtime.sendMessage({
-
-                type: "CREATE_METAFIELD"
-
-            });
-
-
-        });
-
-document
-    .getElementById("createMetaobjectentries")
-    .onclick = async () => {
-
-
-         const entries = await fetch(
-            chrome.runtime.getURL(
-                "config/data/metaobject_entries.json"
-            )
-        ).then(res => res.json());
-
-        const [tab] = await chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        });
-
-
-        chrome.tabs.sendMessage(
-            tab.id,
-            {
-                type: "CREATE_METAOBJECT_ENTRY",
-                payload: entries
-            }
-        );
-
-        
-
-    };
-
-   
+    });

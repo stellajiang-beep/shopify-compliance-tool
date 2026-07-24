@@ -63,8 +63,16 @@
       );
     };
     function captureRequest(operationName, url, options) {
-      if (!url.includes("/api/operations/")) {
-        return;
+      if (url.includes("/api/operations/") && operationName) {
+        window.shopifyRequest = {
+          url,
+          headers: options.headers
+        };
+        console.log(
+          "\u{1F525} Shopify GraphQL\u73AF\u5883\u4FDD\u5B58:",
+          operationName,
+          window.shopifyRequest
+        );
       }
       if (operationName.includes(
         "MetaobjectDefinitionCreate"
@@ -328,6 +336,130 @@
     }
   });
 
+  // src/modules/product-search.js
+  async function findProductIdBySku(sku) {
+    console.log(
+      "\u{1F50D} \u5F00\u59CB\u641C\u7D22SKU:",
+      sku
+    );
+    const requestContext = window.shopifyRequest;
+    if (!requestContext?.url || !requestContext?.headers) {
+      console.log(
+        "\u274C \u6CA1\u6709\u53EF\u7528 Shopify \u8BF7\u6C42\u73AF\u5883"
+      );
+      return null;
+    }
+    const query = `
+    query ProductSearch($query: String!) {
+
+        productVariants(
+            first: 1,
+            query: $query
+        ) {
+
+            nodes {
+
+                sku
+
+                product {
+
+                    id
+
+                    title
+
+                }
+
+            }
+
+        }
+
+    }
+    `;
+    const body = {
+      operationName: "ProductSearch",
+      variables: {
+        query: (
+          // The SKU is a variant attribute. Querying productVariants avoids
+          // missing products whose SKU only exists on a variant.
+          `sku:'${String(sku).replace(/'/g, "\\'")}'`
+        )
+      },
+      query
+    };
+    const response = await fetch(
+      requestContext.url,
+      {
+        method: "POST",
+        // SKU search does not depend on a Metafield-definition request.
+        // Reuse the common Admin GraphQL request captured by the interceptor.
+        headers: requestContext.headers,
+        body: JSON.stringify(body)
+      }
+    );
+    const json = await response.json();
+    console.log(
+      "\u{1F525} Product Search \u8FD4\u56DE:",
+      json
+    );
+    if (json.errors?.length) {
+      console.error(
+        "\u274C Product Search GraphQL errors:",
+        json.errors
+      );
+      return null;
+    }
+    const variant = json.data?.productVariants?.nodes?.[0];
+    const product = variant?.product;
+    if (!product) {
+      console.log(
+        "\u274C \u672A\u627E\u5230:",
+        sku
+      );
+      return null;
+    }
+    console.log(
+      "\u2705 \u627E\u5230:",
+      product.id,
+      product.title
+    );
+    return product.id;
+  }
+  var init_product_search = __esm({
+    "src/modules/product-search.js"() {
+    }
+  });
+
+  // src/modules/set-product-metafields.js
+  async function setProductMetafields(products) {
+    console.log("======================================");
+    console.log("\u{1F680} \u5F00\u59CB\u6267\u884C Product Metafields");
+    console.log("======================================");
+    console.log("\u6536\u5230\u7684\u6570\u636E\uFF1A", products);
+    if (!Array.isArray(products)) {
+      console.error("\u274C payload \u4E0D\u662F\u6570\u7EC4");
+      return;
+    }
+    console.log(`\u5171 ${products.length} \u4E2A Product`);
+    for (const product of products) {
+      console.log("--------------------------------------");
+      console.log("SKU:", product.sku);
+      console.log("Model:", product.model_number);
+      console.log("Manufacturer:", product.manufacturer);
+      const productId = await findProductIdBySku(
+        product.sku
+      );
+      console.log("Product ID:", productId);
+    }
+    console.log("======================================");
+    console.log("\u2705 Product \u6570\u636E\u8BFB\u53D6\u5B8C\u6210");
+    console.log("======================================");
+  }
+  var init_set_product_metafields = __esm({
+    "src/modules/set-product-metafields.js"() {
+      init_product_search();
+    }
+  });
+
   // src/modules/message-handler.js
   function initMessageHandler() {
     window.addEventListener(
@@ -369,6 +501,15 @@
           console.log("\u6536\u5230 EXPORT_MANUFACTURER_MAP");
           exportManufacturerMap();
         }
+        if (event.data.type === "SET_PRODUCT_METAFIELDS") {
+          console.log(
+            "\u{1F525} \u6536\u5230 Product Metafields \u4EFB\u52A1:",
+            event.data
+          );
+          await setProductMetafields(
+            event.data.payload
+          );
+        }
       }
     );
   }
@@ -377,6 +518,7 @@
       init_create_metaobject();
       init_create_metafield();
       init_create_metaobject_entry();
+      init_set_product_metafields();
     }
   });
 

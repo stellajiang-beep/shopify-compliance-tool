@@ -1,4 +1,5 @@
 let metaobjects = [];
+let productMetafields = [];
 
 
 // 加载 Metaobject 配置
@@ -8,17 +9,34 @@ fetch(
         "config/data/metaobjects.json"
     )
 )
-.then(response => response.json())
-.then(data => {
+    .then(response => response.json())
+    .then(data => {
 
-    metaobjects = data;
+        metaobjects = data;
 
-    console.log(
-        "🔥 metaobjects loaded:",
-        metaobjects
-    );
+        console.log(
+            "🔥 metaobjects loaded:",
+            metaobjects
+        );
 
-});
+    });
+
+fetch(
+    chrome.runtime.getURL(
+        "config/data/products.json"
+    )
+)
+    .then(response => response.json())
+    .then(data => {
+
+        productMetafields = data;
+
+        console.log(
+            "🔥 product_metafields loaded:",
+            productMetafields
+        );
+
+    });
 
 
 console.log(
@@ -130,13 +148,6 @@ chrome.runtime.onMessage.addListener(
 
         }
 
-
-
-
-
-
-
-
         // ==========================
         // 创建 Metaobject
         // ==========================
@@ -159,7 +170,7 @@ chrome.runtime.onMessage.addListener(
                         tabs[0].id,
                         {
 
-                            type:"CREATE_METAOBJECT",
+                            type: "CREATE_METAOBJECT",
 
                             payload:
                                 metaobjects
@@ -173,13 +184,6 @@ chrome.runtime.onMessage.addListener(
 
 
         }
-
-
-
-
-
-
-
 
         // ==========================
         // 创建 Product Metafield
@@ -201,53 +205,83 @@ chrome.runtime.onMessage.addListener(
                     "config/data/metafields.json"
                 )
             )
-            .then(res => res.json())
-            .then(data => {
+                .then(res => res.json())
+                .then(data => {
 
 
-                console.log(
-                    "🔥 metafields loaded:",
-                    data
-                );
+                    console.log(
+                        "🔥 metafields loaded:",
+                        data
+                    );
 
 
 
-                chrome.tabs.query(
-                    {
-                        active:true,
-                        currentWindow:true
-                    },
-                    tabs => {
+                    chrome.tabs.query(
+                        {
+                            active: true,
+                            currentWindow: true
+                        },
+                        tabs => {
 
 
-                        console.log(
-                            "🔥 发送 CREATE_METAFIELD 到 content:",
-                            tabs[0].id
-                        );
+                            console.log(
+                                "🔥 发送 CREATE_METAFIELD 到 content:",
+                                tabs[0].id
+                            );
 
 
-                        chrome.tabs.sendMessage(
-                            tabs[0].id,
-                            {
+                            chrome.tabs.sendMessage(
+                                tabs[0].id,
+                                {
 
-                                type:"CREATE_METAFIELD",
+                                    type: "CREATE_METAFIELD",
 
-                                payload:data
+                                    payload: data
 
-                            }
-                        );
-
-
-                    }
-                );
+                                }
+                            );
 
 
-            });
+                        }
+                    );
+
+
+                });
 
 
         }
 
+        // ==========================
+        // Set Product Metafields
+        // ==========================
 
+        if (
+            message.type === "SET_PRODUCT_METAFIELDS"
+        ) {
+
+            console.log(
+                "🔥 开始设置 Product Metafields"
+            );
+
+            chrome.tabs.query(
+                {
+                    active: true,
+                    currentWindow: true
+                },
+                tabs => {
+
+                    chrome.tabs.sendMessage(
+                        tabs[0].id,
+                        {
+                            type: "SET_PRODUCT_METAFIELDS",
+                            payload: productMetafields
+                        }
+                    );
+
+                }
+            );
+
+        }
 
     }
 );

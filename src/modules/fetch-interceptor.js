@@ -64,10 +64,28 @@ export function initFetchInterceptor() {
         options
     ) {
 
+        // 保存 Shopify Admin GraphQL 请求环境
         if (
-            !url.includes("/api/operations/")
+            url.includes("/api/operations/")
+            &&
+            operationName
         ) {
-            return;
+
+            window.shopifyRequest = {
+
+                url: url,
+
+                headers: options.headers
+
+            };
+
+
+            console.log(
+                "🔥 Shopify GraphQL环境保存:",
+                operationName,
+                window.shopifyRequest
+            );
+
         }
         // 捕获 Metaobject
         if (
@@ -124,6 +142,7 @@ export function initFetchInterceptor() {
                 window.lastMetafieldRequest
             );
         }
+
     }
 
 
