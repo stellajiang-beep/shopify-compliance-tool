@@ -1,4 +1,4 @@
-import { findProductIdBySku } from "./product-search.js";
+import { startProductSearchJob } from "./product-search.js";
 
 export async function setProductMetafields(products) {
 
@@ -15,23 +15,7 @@ export async function setProductMetafields(products) {
 
     console.log(`共 ${products.length} 个 Product`);
 
-    for (const product of products) {
-
-        console.log("--------------------------------------");
-        console.log("SKU:", product.sku);
-        console.log("Model:", product.model_number);
-        console.log("Manufacturer:", product.manufacturer);
-
-        const productId = await findProductIdBySku(
-            product.sku
-        );
-
-        console.log("Product ID:", productId);
-
-    }
-
-    console.log("======================================");
-    console.log("✅ Product 数据读取完成");
-    console.log("======================================");
+    console.log("⏳ 启动串行 SKU 搜索队列，产品之间间隔 1.8 秒");
+    startProductSearchJob(products);
 
 }

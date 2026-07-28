@@ -252,6 +252,70 @@ chrome.runtime.onMessage.addListener(
         }
 
         // ==========================
+        // Create Metaobject Entry
+        // ==========================
+
+        if (
+            message.type === "CREATE_METAOBJECT_ENTRY"
+        ) {
+
+            fetch(
+                chrome.runtime.getURL(
+                    "config/data/metaobject_entries.json"
+                )
+            )
+                .then(res => res.json())
+                .then(entries => {
+
+                    console.log(
+                        "Loading Metaobject Entry data:",
+                        entries
+                    );
+
+                    chrome.tabs.query(
+                        {
+                            active: true,
+                            currentWindow: true
+                        },
+                        tabs => {
+
+                            if (!tabs[0]?.id) {
+                                console.error(
+                                    "No active tab available for Metaobject Entry creation"
+                                );
+                                return;
+                            }
+
+                            chrome.tabs.sendMessage(
+                                tabs[0].id,
+                                {
+                                    type: "CREATE_METAOBJECT_ENTRY",
+                                    payload: entries
+                                },
+                                () => {
+                                    if (chrome.runtime.lastError) {
+                                        console.error(
+                                            "Failed to send Metaobject Entry task:",
+                                            chrome.runtime.lastError.message
+                                        );
+                                    }
+                                }
+                            );
+
+                        }
+                    );
+
+                })
+                .catch(error => {
+                    console.error(
+                        "Failed to load Metaobject Entry data:",
+                        error
+                    );
+                });
+
+        }
+
+        // ==========================
         // Set Product Metafields
         // ==========================
 

@@ -64,6 +64,10 @@ export function initFetchInterceptor() {
         options
     ) {
 
+        if (typeof url !== "string") {
+            return;
+        }
+
         // 保存 Shopify Admin GraphQL 请求环境
         if (
             url.includes("/api/operations/")
@@ -78,6 +82,19 @@ export function initFetchInterceptor() {
                 headers: options.headers
 
             };
+
+            if (operationName === "SetTheseMetafields") {
+                window.lastProductMetafieldRequest = {
+                    url,
+                    headers: options.headers,
+                    body: options.body
+                };
+                sessionStorage.setItem(
+                    "shopifyProductMetafieldTemplate",
+                    JSON.stringify(window.lastProductMetafieldRequest)
+                );
+                console.log("🔥 捕获 Product Metafield 更新模板:", window.lastProductMetafieldRequest);
+            }
 
 
             console.log(

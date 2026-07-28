@@ -21,7 +21,8 @@
     {
       "resources": [
         "dist/page-inject.js",
-        "config/*.json"
+        "config/*.json",
+        "manufacturer-map/*.json"
       ],
       "matches": [
         "<all_urls>"

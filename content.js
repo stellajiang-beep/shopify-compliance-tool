@@ -160,3 +160,32 @@ window.addEventListener(
 
     }
 );
+// 在 extension isolated world 读取店铺语言和 Manufacturer Map，
+// 再传给 page-inject.js（页面 world 无法访问 chrome.runtime）。
+(async () => {
+    try {
+        const storeId = location.pathname.match(/^\/store\/([^/]+)/)?.[1];
+        if (!storeId) return;
+        const localeMap = await fetch(
+            chrome.runtime.getURL("config/store-locale-map.json")
+        ).then((response) => response.json());
+        const locale = localeMap[storeId];
+        if (!locale) return;
+        const manufacturerMap = await fetch(
+            chrome.runtime.getURL(`manufacturer-map/${locale}-manufacturer-map.json`)
+        ).then((response) => response.json());
+        sessionStorage.setItem("shopifyManufacturerMap", JSON.stringify({
+            storeId,
+            locale,
+            manufacturerMap
+        }));
+        window.postMessage({
+            type: "SHOPIFY_MANUFACTURER_MAP",
+            storeId,
+            locale,
+            manufacturerMap
+        }, "*");
+    } catch (error) {
+        console.error("Manufacturer Map 加载失败:", error);
+    }
+})();
