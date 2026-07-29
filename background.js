@@ -327,7 +327,9 @@ chrome.runtime.onMessage.addListener(
                 "🔥 开始设置 Product Metafields"
             );
 
-            chrome.tabs.query(
+            // Service worker 可能刚刚被唤醒，此时初始化 fetch 尚未完成。
+            // 点击按钮时确保 products.json 已加载，再发送任务。
+            const sendProductMetafieldTask = () => chrome.tabs.query(
                 {
                     active: true,
                     currentWindow: true
@@ -344,6 +346,19 @@ chrome.runtime.onMessage.addListener(
 
                 }
             );
+
+            if (Array.isArray(productMetafields) && productMetafields.length) {
+                sendProductMetafieldTask();
+            } else {
+                fetch(chrome.runtime.getURL("config/data/products.json"))
+                    .then(response => response.json())
+                    .then(data => {
+                        productMetafields = data;
+                        console.log("✅ 点击时重新加载 products.json:", productMetafields.length);
+                        sendProductMetafieldTask();
+                    })
+                    .catch(error => console.error("❌ products.json 加载失败:", error));
+            }
 
         }
 

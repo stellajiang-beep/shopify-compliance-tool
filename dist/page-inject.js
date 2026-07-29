@@ -377,7 +377,7 @@
     );
     if (!rawTemplate) {
       console.warn("\u26A0\uFE0F \u6CA1\u6709 SetTheseMetafields \u6A21\u677F\uFF0C\u8DF3\u8FC7\u5B57\u6BB5\u5199\u5165");
-      return false;
+      return { ok: false, imageIds: [] };
     }
     const template = JSON.parse(rawTemplate);
     const manufacturerMap = await loadManufacturerMap();
@@ -385,6 +385,7 @@
     if (!manufacturerId) {
       throw new Error(`\u627E\u4E0D\u5230 Manufacturer \u6620\u5C04: ${product.manufacturer}`);
     }
+    const imageIds = await findImageGidsByModel(product.model_number);
     const body = JSON.parse(template.body);
     body.variables.metafields = [
       {
@@ -402,6 +403,15 @@
         ownerId: `gid://shopify/Product/${productId}`
       }
     ];
+    if (imageIds.length) {
+      body.variables.metafields.push({
+        namespace: "custom",
+        key: "safety_warning_image",
+        value: JSON.stringify(imageIds),
+        type: "list.file_reference",
+        ownerId: `gid://shopify/Product/${productId}`
+      });
+    }
     console.log("\u{1F4DD} \u5199\u5165 Product Metafields:", body.variables.metafields);
     window.isCreating = true;
     try {
@@ -414,13 +424,139 @@
       console.log("\u2705 Product Metafields \u5199\u5165\u8FD4\u56DE:", result);
       const userErrors = Object.values(result.data || {}).flatMap((value) => Array.isArray(value?.userErrors) ? value.userErrors : []);
       if (result.errors?.length || userErrors.length) {
-        console.error("\u274C Shopify metafield userErrors:", userErrors, result.errors);
-        return false;
+        console.error(
+          "\u274C Shopify metafield userErrors:",
+          JSON.stringify(userErrors, null, 2),
+          JSON.stringify(result.errors || [], null, 2)
+        );
+        return { ok: false, imageIds };
       }
-      return response.ok;
+      return { ok: response.ok, imageIds };
     } finally {
       window.isCreating = false;
     }
+  }
+  function setInputValue(input, value) {
+    const setter = Object.getOwnPropertyDescriptor(
+      HTMLInputElement.prototype,
+      "value"
+    )?.set;
+    setter?.call(input, value);
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+    input.dispatchEvent(new KeyboardEvent("keyup", { key: "Enter", bubbles: true }));
+  }
+  async function waitForElement(selector, timeout = 15e3) {
+    const started = Date.now();
+    while (Date.now() - started < timeout) {
+      const element = document.querySelector(selector);
+      if (element) return element;
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+    return null;
+  }
+  async function findImageGidsByModel(modelNumber) {
+    const model = String(modelNumber ?? "").trim();
+    if (!model) return [];
+    let pickerInput = document.querySelector('input[placeholder="Search files"]');
+    if (!pickerInput) {
+      const editControl = await waitForElement(
+        '[role="button"][aria-label="Edit Safety Warning Image metafield"]',
+        15e3
+      );
+      console.log("\u{1F5BC}\uFE0F Safety Warning Image \u7F16\u8F91\u63A7\u4EF6:", Boolean(editControl));
+      if (editControl) {
+        editControl.click();
+      }
+      const label = [...document.querySelectorAll("*")].find(
+        (element) => element.children.length === 0 && /^Safety Warning Image$/i.test(element.textContent?.trim() || "")
+      );
+      let fieldContainer = label;
+      let readWrappers = [];
+      for (let level = 0; level < 8 && fieldContainer; level += 1) {
+        readWrappers = [...fieldContainer.querySelectorAll("div[class*='ReadWrapper']")].filter((element) => element.getBoundingClientRect().width > 0);
+        if (readWrappers.length) break;
+        fieldContainer = fieldContainer.parentElement;
+      }
+      if (!editControl) readWrappers[0]?.click();
+      await new Promise((resolve) => setTimeout(resolve, 300));
+      const internalButton = [...document.querySelectorAll("s-internal-button")].find((element) => /select (file|images)/i.test(
+        element.shadowRoot?.querySelector("button")?.textContent || ""
+      ));
+      let selectButton = internalButton?.shadowRoot?.querySelector("button") || [...document.querySelectorAll(
+        "button, [role='button'], s-button"
+      )].find((button) => /select (file|images)/i.test(
+        button.innerText || button.textContent || ""
+      )) || [...document.querySelectorAll("*")].find(
+        (element) => element.children.length === 0 && /^select (file|images)$/i.test(element.textContent?.trim() || "")
+      );
+      if (!selectButton) {
+        for (const wrapper of readWrappers.slice(1)) {
+          wrapper.click();
+          await new Promise((resolve) => setTimeout(resolve, 250));
+          const button = [...document.querySelectorAll("s-internal-button")].find((element) => /select (file|images)/i.test(
+            element.shadowRoot?.querySelector("button")?.textContent || ""
+          ));
+          if (button) {
+            selectButton = button.shadowRoot.querySelector("button");
+            break;
+          }
+        }
+      }
+      console.log("\u{1F5BC}\uFE0F Select images \u6309\u94AE:", Boolean(selectButton));
+      selectButton?.click();
+      pickerInput = await waitForElement('input[placeholder="Search files"]');
+    }
+    if (!pickerInput) {
+      console.warn("\u26A0\uFE0F \u627E\u4E0D\u5230\u56FE\u7247\u9009\u62E9\u5668:", model);
+      return [];
+    }
+    setInputValue(pickerInput, model);
+    await new Promise((resolve) => setTimeout(resolve, 1e3));
+    const started = Date.now();
+    while (Date.now() - started < 15e3) {
+      const escaped = model.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const numberedPattern = new RegExp(`^${escaped}-(\\d+)$`, "i");
+      const exactPattern = new RegExp(`^${escaped}$`, "i");
+      const candidates = [...document.querySelectorAll("img")].filter((candidate) => {
+        const alt = candidate.alt?.trim() || "";
+        const filename = decodeURIComponent(candidate.src || "").split("/").pop()?.split("?")[0].replace(/_\d+x\.(png|jpe?g)$/i, ".$1") || "";
+        return numberedPattern.test(alt) || exactPattern.test(alt) || numberedPattern.test(filename.replace(/\.(png|jpe?g)$/i, "")) || exactPattern.test(filename.replace(/\.(png|jpe?g)$/i, ""));
+      });
+      if (Date.now() - started < 2e3) {
+        console.log("\u{1F50E} \u56FE\u7247\u5019\u9009:", model, candidates.map((image) => ({
+          alt: image.alt,
+          src: image.src
+        })));
+      }
+      const numbered = candidates.filter((candidate) => numberedPattern.test(candidate.alt.trim())).sort((a, b) => {
+        const aNumber = Number(a.alt.match(numberedPattern)?.[1]);
+        const bNumber = Number(b.alt.match(numberedPattern)?.[1]);
+        return aNumber - bNumber;
+      });
+      const images = numbered.length ? numbered : candidates.filter((candidate) => exactPattern.test(candidate.alt.trim()));
+      const imageIds = images.map((image) => image.closest("div")?.parentElement?.querySelector("s-checkbox[id^='gid://shopify/MediaImage/']")?.id).filter(Boolean);
+      if (imageIds.length) {
+        images.forEach((image) => {
+          const checkbox = image.closest("div")?.parentElement?.querySelector("s-checkbox[id^='gid://shopify/MediaImage/']");
+          if (!checkbox) return;
+          const target = checkbox.shadowRoot?.querySelector("input, button") || checkbox;
+          target.click?.();
+          target.dispatchEvent?.(new MouseEvent("click", {
+            bubbles: true,
+            composed: true,
+            cancelable: true
+          }));
+        });
+        const done = [...document.querySelectorAll("button, [role='button']")].find((button) => /^done$/i.test(button.innerText?.trim() || ""));
+        done?.click();
+        console.log("\u{1F5BC}\uFE0F \u627E\u5230\u56FE\u7247:", model, imageIds);
+        return [...new Set(imageIds)];
+      }
+      await new Promise((resolve) => setTimeout(resolve, 400));
+    }
+    console.warn("\u26A0\uFE0F \u627E\u4E0D\u5230\u56FE\u7247:", model);
+    return [];
   }
   function readJob() {
     try {
@@ -511,6 +647,19 @@
     const nextIndex = job.index + 1;
     if (nextIndex >= job.products.length) {
       console.log("\u2705 \u6240\u6709 SKU \u5904\u7406\u5B8C\u6210:", job.results);
+      const missingImages = Object.entries(job.results).filter(([, result]) => result.image === "not_found").map(([sku, result]) => ({ sku, ...result }));
+      if (missingImages.length) {
+        console.warn("\u26A0\uFE0F \u56FE\u7247\u672A\u627E\u5230\u62A5\u544A:", missingImages);
+        const blob = new Blob(
+          [JSON.stringify(missingImages, null, 2)],
+          { type: "application/json" }
+        );
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "missing-product-images.json";
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
       clearJob();
       return;
     }
@@ -546,7 +695,8 @@
       console.log("\u2705 SKU -> Product ID:", sku, detailId);
       try {
         const written = await writeProductMetafields(product, detailId);
-        job.results[sku].metafields = written ? "success" : "skipped";
+        job.results[sku].metafields = written.ok ? "success" : "failed";
+        job.results[sku].image = written.imageIds?.length ? "success" : "not_found";
       } catch (error) {
         job.results[sku].metafields = "failed";
         job.results[sku].error = error.message;
