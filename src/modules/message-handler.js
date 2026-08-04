@@ -2,6 +2,13 @@ import { createMetaobjectDefinition } from "./create-metaobject.js";
 import { createMetafieldDefinition } from "./create-metafield.js";
 import { createMetaobjectEntries } from "./create-metaobject-entry.js";
 import { setProductMetafields } from "./set-product-metafields.js";
+import {
+    cancelProductSearchJob,
+    getProductSearchJobStatus,
+    pauseProductSearchJob,
+    resetCompletedProducts,
+    resumePausedProductSearchJob
+} from "./product-search.js";
 
 export function initMessageHandler() {
     window.addEventListener(
@@ -73,6 +80,27 @@ export function initMessageHandler() {
                     event.data.payload
                 );
 
+            }
+            if (event.data.type === "PAUSE_PRODUCT_JOB") {
+                pauseProductSearchJob();
+            }
+            if (event.data.type === "RESUME_PRODUCT_JOB") {
+                await resumePausedProductSearchJob();
+            }
+            if (event.data.type === "CANCEL_PRODUCT_JOB") {
+                cancelProductSearchJob();
+            }
+            if (event.data.type === "RESET_COMPLETED_PRODUCTS") {
+                resetCompletedProducts();
+            }
+            if (event.data.type === "REQUEST_PRODUCT_JOB_STATUS") {
+                const status = getProductSearchJobStatus();
+                if (status) {
+                    window.postMessage({
+                        type: "PRODUCT_JOB_STATUS",
+                        payload: status
+                    }, "*");
+                }
             }
         }
     );

@@ -1,51 +1,83 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Compliance Tool</title>
-
+  <title>Shopify Compliance Tool</title>
   <style>
-    body {
-      width: 300px;
-      padding: 20px;
-      font-family: Arial;
-    }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 8px;
-    }
+    body { width: 380px; margin: 0; padding: 16px; font: 13px/1.45 Arial, sans-serif; color: #202223; box-sizing: border-box; }
+    h3 { margin: 0 0 12px; font-size: 16px; }
+    .panel { border: 1px solid #dfe3e8; border-radius: 8px; padding: 12px; margin: 10px 0; }
+    .row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+    .spread { justify-content: space-between; }
+    button { border: 1px solid #babfc3; background: #fff; border-radius: 5px; padding: 7px 9px; cursor: pointer; }
+    button.primary { background: #008060; color: white; border-color: #008060; }
+    button.danger { color: #b98900; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    input[type=file] { display: none; }
+    label.file { border: 1px solid #babfc3; border-radius: 5px; padding: 7px 9px; cursor: pointer; }
+    .progress { height: 8px; background: #e4e5e7; border-radius: 999px; overflow: hidden; margin: 9px 0; }
+    .progress > div { height: 100%; width: 0; background: #008060; transition: width .2s; }
+    #status-text { min-height: 20px; color: #4a4f55; }
+    #field-preview { margin: 8px 0 0; padding-left: 18px; color: #616161; }
+    #recent-results { max-height: 190px; overflow-y: auto; margin-top: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    th, td { padding: 5px 3px; border-top: 1px solid #eceeef; text-align: left; vertical-align: top; word-break: break-word; }
+    .hint { color: #6d7175; font-size: 12px; }
+    .hidden { display: none; }
   </style>
 </head>
-
 <body>
-
   <h3>Shopify Compliance Tool</h3>
 
-  <button id="test-connection">
-    测试连接 Shopify
-  </button>
+  <section class="panel">
+    <div class="row spread"><strong>原有工具</strong><span class="hint">保留全部功能</span></div>
+    <div class="row">
+      <button id="test-connection">测试 Shopify 连接</button>
+      <button id="create-metaobject">创建 Metaobject</button>
+    </div>
+    <div class="row">
+      <button id="create-metafield">创建 Product Metafield</button>
+      <button id="create-metaobject-entry">创建 Metaobject Entry</button>
+    </div>
+  </section>
 
-  <button id="create-metaobject">
-    创建 Metaobject
-  </button>
+  <section class="panel">
+    <div class="row spread"><strong>商品字段导入</strong><span id="source-count" class="hint">加载中…</span></div>
+    <div class="row">
+      <label><input type="radio" name="source" value="bundled" checked> 内置 products.json</label>
+      <label><input type="radio" name="source" value="imported"> 已导入 JSON</label>
+    </div>
+    <div class="row">
+      <label class="file" for="products-file">导入 products.json</label>
+      <input id="products-file" type="file" accept="application/json,.json">
+      <span id="import-message" class="hint"></span>
+    </div>
+    <div id="preview-wrap" class="hidden">
+      <div class="hint">将写入以下字段（首条记录预览）：</div>
+      <ul id="field-preview"></ul>
+    </div>
+  </section>
 
-  <button id="create-metafield">
-    Create Product Metafield
-  </button>
-
-  <button id="create-metaobject-entry">
-    Create Metaobject Entry
-  </button>
-
-  <button id="set-product-metafields">
-    Set Product Metafields
-  </button>
+  <section class="panel">
+    <div class="row spread"><strong>执行进度</strong><span id="progress-count">未开始</span></div>
+    <div class="progress"><div id="progress-bar"></div></div>
+    <div id="status-text">选择数据源后即可开始。</div>
+    <div class="row spread">
+      <button id="previous-batch">上一批</button>
+      <span id="batch-info" class="hint">第 1 / 1 批（每批 45 条）</span>
+      <button id="next-batch">下一批</button>
+    </div>
+    <div class="row">
+      <button id="start" class="primary">开始当前批次</button>
+      <button id="pause">暂停</button>
+      <button id="resume">继续</button>
+      <button id="cancel" class="danger">取消</button>
+      <button id="reset" class="danger">重置记录</button>
+    </div>
+    <div class="row spread"><strong>最近结果（10 条）</strong><button id="export-results">导出完整结果 CSV</button></div>
+    <div id="recent-results" class="hint">暂无结果</div>
+  </section>
 
   <script src="popup.js"></script>
-
 </body>
-
 </html>

@@ -5,7 +5,7 @@ let metaobjectTemplate = null;
 
 fetch(
     chrome.runtime.getURL(
-        "config/metaobject-definition-template.json"
+        "config/templates/metaobject-definition-template.json"
     )
 )
     .then(res => res.json())
@@ -132,6 +132,9 @@ chrome.runtime.onMessage.addListener(
         }
 
 
+        if (message.type !== "PAGE_TEST") {
+            sendResponse({ success: true });
+        }
         return true;
 
 
@@ -157,6 +160,13 @@ window.addEventListener(
 
         }
 
+        if (event.source === window && event.data.type === "PRODUCT_JOB_STATUS") {
+            chrome.runtime.sendMessage({
+                type: "PRODUCT_JOB_STATUS",
+                payload: event.data.payload
+            });
+        }
+
 
     }
 );
@@ -174,16 +184,46 @@ window.addEventListener(
         const manufacturerMap = await fetch(
             chrome.runtime.getURL(`manufacturer-map/${locale}-manufacturer-map.json`)
         ).then((response) => response.json());
+        const profileMaps = await fetch(
+            chrome.runtime.getURL("config/compliance-profile-map.json")
+        ).then((response) => response.json());
+        const complianceProfileMap = profileMaps[locale] || {};
+        const safetyTextMaps = await fetch(
+            chrome.runtime.getURL("config/safty-text.json")
+        ).then((response) => response.json());
+        const safetyTextMap = safetyTextMaps[locale] || {};
         sessionStorage.setItem("shopifyManufacturerMap", JSON.stringify({
             storeId,
             locale,
             manufacturerMap
+        }));
+        sessionStorage.setItem("shopifyComplianceProfileMap", JSON.stringify({
+            storeId,
+            locale,
+            complianceProfileMap
+        }));
+        sessionStorage.setItem("shopifySafetyTextMap", JSON.stringify({
+            storeId,
+            locale,
+            safetyTextMap
         }));
         window.postMessage({
             type: "SHOPIFY_MANUFACTURER_MAP",
             storeId,
             locale,
             manufacturerMap
+        }, "*");
+        window.postMessage({
+            type: "SHOPIFY_COMPLIANCE_PROFILE_MAP",
+            storeId,
+            locale,
+            complianceProfileMap
+        }, "*");
+        window.postMessage({
+            type: "SHOPIFY_SAFETY_TEXT_MAP",
+            storeId,
+            locale,
+            safetyTextMap
         }, "*");
     } catch (error) {
         console.error("Manufacturer Map 加载失败:", error);

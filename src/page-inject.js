@@ -19,11 +19,33 @@ try {
 } catch {
     window.shopifyManufacturerMap = null;
 }
+try {
+    window.shopifyComplianceProfileMap = JSON.parse(
+        sessionStorage.getItem("shopifyComplianceProfileMap") || "null"
+    )?.complianceProfileMap || null;
+} catch {
+    window.shopifyComplianceProfileMap = null;
+}
+try {
+    window.shopifySafetyTextMap = JSON.parse(
+        sessionStorage.getItem("shopifySafetyTextMap") || "null"
+    )?.safetyTextMap || null;
+} catch {
+    window.shopifySafetyTextMap = null;
+}
 
 window.addEventListener("message", (event) => {
     if (event.source === window && event.data?.type === "SHOPIFY_MANUFACTURER_MAP") {
         window.shopifyManufacturerMap = event.data.manufacturerMap;
         console.log("✅ Manufacturer Map 已加载:", event.data.locale);
+    }
+    if (event.source === window && event.data?.type === "SHOPIFY_COMPLIANCE_PROFILE_MAP") {
+        window.shopifyComplianceProfileMap = event.data.complianceProfileMap;
+        console.log("✅ Compliance Profile Map 已加载:", event.data.locale);
+    }
+    if (event.source === window && event.data?.type === "SHOPIFY_SAFETY_TEXT_MAP") {
+        window.shopifySafetyTextMap = event.data.safetyTextMap;
+        console.log("✅ Safety Text Map 已加载:", event.data.locale);
     }
 });
 

@@ -1,6 +1,53 @@
 let metaobjects = [];
 let productMetafields = [];
 
+function getActiveTab(callback) {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const tabId = tabs[0]?.id;
+        callback(tabId ? null : new Error("No active tab"), tabId);
+    });
+}
+
+function productJobStatusKey(tabId) {
+    return `productJobStatus:${tabId}`;
+}
+
+function importedProductsKey(tabId) {
+    return `importedProducts:${tabId}`;
+}
+
+function productJobReportKey(tabId) {
+    return `productJobReport:${tabId}`;
+}
+
+function sendProductJobCommand(type, payload, callback = () => {}) {
+    getActiveTab((tabError, tabId) => {
+        if (tabError) return callback(tabError);
+        const send = (allowInjectionRetry) => chrome.tabs.sendMessage(tabId, { type, payload }, () => {
+            const error = chrome.runtime.lastError;
+            if (allowInjectionRetry && /Receiving end does not exist/i.test(error?.message || "")) {
+                chrome.scripting.executeScript({
+                    target: { tabId },
+                    files: ["content.js"]
+                }, () => {
+                    const injectionError = chrome.runtime.lastError;
+                    if (injectionError) return callback(new Error(injectionError.message));
+                    // page-inject.js is appended by content.js and needs one event loop turn to load.
+                    setTimeout(() => send(false), 250);
+                });
+                return;
+            }
+            callback(error ? new Error(error.message) : null);
+        });
+        send(true);
+    });
+}
+
+async function loadBundledProducts() {
+    const response = await fetch(chrome.runtime.getURL("config/data/products.json"));
+    return response.json();
+}
+
 
 // 加载 Metaobject 配置
 
@@ -49,6 +96,72 @@ console.log(
 
 chrome.runtime.onMessage.addListener(
     (message, sender, sendResponse) => {
+
+        if (message.type === "PRODUCT_JOB_STATUS") {
+            const tabId = sender.tab?.id;
+            if (!tabId) return;
+            const statusKey = productJobStatusKey(tabId);
+            const reportKey = productJobReportKey(tabId);
+            if (message.payload?.state === "reset") {
+                chrome.storage.local.remove(reportKey);
+            }
+            chrome.storage.local.get(reportKey, (saved) => {
+                const reportResults = message.payload?.state === "reset"
+                    ? {}
+                    : {
+                        ...(saved[reportKey]?.results || {}),
+                        ...(message.payload?.results || {})
+                    };
+                chrome.storage.local.set({
+                    [statusKey]: message.payload,
+                    [reportKey]: { results: reportResults, updatedAt: Date.now() },
+                    [`productJobUpdatedAt:${tabId}`]: Date.now()
+                });
+            });
+            return;
+        }
+
+        if (message.type === "GET_PRODUCT_PANEL_DATA") {
+            getActiveTab((tabError, tabId) => {
+                if (tabError) return sendResponse({ error: tabError.message });
+                const importKey = importedProductsKey(tabId);
+                const statusKey = productJobStatusKey(tabId);
+                const reportKey = productJobReportKey(tabId);
+                Promise.all([
+                    loadBundledProducts(),
+                    chrome.storage.local.get([importKey, statusKey, reportKey])
+                ]).then(([bundledProducts, saved]) => sendResponse({
+                    tabId,
+                    bundledCount: bundledProducts.length,
+                    importedCount: Array.isArray(saved[importKey]) ? saved[importKey].length : 0,
+                    importedProducts: saved[importKey] || [],
+                    status: saved[statusKey] || null,
+                    reportResults: saved[reportKey]?.results || {}
+                })).catch((error) => sendResponse({ error: error.message }));
+            });
+            return true;
+        }
+
+        if (message.type === "SAVE_IMPORTED_PRODUCTS") {
+            if (!Array.isArray(message.payload)) {
+                sendResponse({ error: "Imported data must be an array" });
+                return;
+            }
+            getActiveTab((tabError, tabId) => {
+                if (tabError) return sendResponse({ error: tabError.message });
+                chrome.storage.local.set({ [importedProductsKey(tabId)]: message.payload }, () => {
+                    sendResponse({ ok: true, count: message.payload.length });
+                });
+            });
+            return true;
+        }
+
+        if (["PAUSE_PRODUCT_JOB", "RESUME_PRODUCT_JOB", "CANCEL_PRODUCT_JOB", "RESET_COMPLETED_PRODUCTS", "REQUEST_PRODUCT_JOB_STATUS"].includes(message.type)) {
+            sendProductJobCommand(message.type, null, (error) => {
+                sendResponse(error ? { error: error.message } : { ok: true });
+            });
+            return true;
+        }
 
 
         console.log(
@@ -329,37 +442,52 @@ chrome.runtime.onMessage.addListener(
 
             // Service worker 可能刚刚被唤醒，此时初始化 fetch 尚未完成。
             // 点击按钮时确保 products.json 已加载，再发送任务。
-            const sendProductMetafieldTask = () => chrome.tabs.query(
-                {
-                    active: true,
-                    currentWindow: true
-                },
-                tabs => {
-
-                    chrome.tabs.sendMessage(
-                        tabs[0].id,
-                        {
-                            type: "SET_PRODUCT_METAFIELDS",
-                            payload: productMetafields
-                        }
-                    );
-
+            const batchRequest = Array.isArray(message.payload)
+                ? { products: message.payload }
+                : (message.payload || {});
+            const sendProductMetafieldTask = (allProducts) => {
+                const batchSize = Math.max(1, Number(batchRequest.batchSize) || allProducts.length);
+                const totalBatches = Math.max(1, Math.ceil(allProducts.length / batchSize));
+                const batchIndex = Math.min(
+                    Math.max(0, Number(batchRequest.batchIndex) || 0),
+                    totalBatches - 1
+                );
+                const products = allProducts.slice(
+                    batchIndex * batchSize,
+                    (batchIndex + 1) * batchSize
+                );
+                if (!products.length) {
+                    sendResponse?.({ error: "Selected batch is empty" });
+                    return;
                 }
-            );
+                sendProductJobCommand(
+                    "SET_PRODUCT_METAFIELDS",
+                    products,
+                    (error) => sendResponse?.(error
+                        ? { error: error.message }
+                        : { ok: true, count: products.length, batchIndex, totalBatches })
+                );
+            };
+
+            if (Array.isArray(batchRequest.products)) {
+                sendProductMetafieldTask(batchRequest.products);
+                return true;
+            }
 
             if (Array.isArray(productMetafields) && productMetafields.length) {
-                sendProductMetafieldTask();
+                sendProductMetafieldTask(productMetafields);
             } else {
                 fetch(chrome.runtime.getURL("config/data/products.json"))
                     .then(response => response.json())
                     .then(data => {
                         productMetafields = data;
                         console.log("✅ 点击时重新加载 products.json:", productMetafields.length);
-                        sendProductMetafieldTask();
+                        sendProductMetafieldTask(productMetafields);
                     })
                     .catch(error => console.error("❌ products.json 加载失败:", error));
             }
 
+            return true;
         }
 
     }

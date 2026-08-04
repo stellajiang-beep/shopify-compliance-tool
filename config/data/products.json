@@ -1,12 +1,1130 @@
 [
   {
+    "sku": "011304AA000037",
+    "model_number": "65S100",
+    "manufacturer": "shenzhen-televi-intelligent-technology-co-ltd",
+    "safety_warning_text": "tv_text",
+    "product_name": "TV-65S100"
+  },
+  {
+    "sku": "010403AC000034",
+    "model_number": "AA01A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Steam Straight"
+  },
+  {
+    "sku": "010901AA000226",
+    "model_number": "MXXA7300",
+    "manufacturer": "tsingting-intelligent-tech-suzhou-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A3 AWD 1000"
+  },
+  {
+    "sku": "010901AA000231",
+    "model_number": "MXXA7302",
+    "manufacturer": "tsingting-intelligent-tech-suzhou-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A3 AWD 2000"
+  },
+  {
+    "sku": "010901AA000188",
+    "model_number": "MXXA8203",
+    "manufacturer": "tsingting-intelligent-tech-suzhou-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A2 1200"
+  },
+  {
+    "sku": "010901AA000119",
+    "model_number": "MXXA8210",
+    "manufacturer": "kutting-technology-suzhou-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A2 3000"
+  },
+  {
+    "sku": "010901AA000036",
+    "model_number": "MXXA8210",
+    "manufacturer": "kutting-technology-suzhou-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A2 3000"
+  },
+  {
+    "sku": "010901AA000099",
+    "model_number": "MXXA9300",
+    "manufacturer": "tsingting-intelligent-tech-suzhou-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A3 AWD Pro 3500"
+  },
+  {
+    "sku": "010901AA000217",
+    "model_number": "MXXA9301",
+    "manufacturer": "tsingting-intelligent-tech-suzhou-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A3 AWD Pro 5000"
+  },
+  {
+    "sku": "010901AA000115",
+    "model_number": "MLLA7210",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A1 Pro 2000"
+  },
+  {
+    "sku": "010901AA000013",
+    "model_number": "MLLA7210",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "compliance_profile": "lawn-mower",
+    "product_name": "A1 Pro 2000"
+  },
+  {
+    "sku": "010403AK000064",
+    "model_number": "AAT01A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Air Auto"
+  },
+  {
+    "sku": "010403AK000064",
+    "model_number": "AAT01A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Air Auto"
+  },
+  {
+    "sku": "010410AA000001",
+    "model_number": "AB01A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Chrona"
+  },
+  {
+    "sku": "01040100000159",
+    "model_number": "AHD12A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Gleam"
+  },
+  {
+    "sku": "01040100000160",
+    "model_number": "AHD12A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Gleam"
+  },
+  {
+    "sku": "010401AB000265",
+    "model_number": "AHD18",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Glory Mix"
+  },
+  {
+    "sku": "010401AC000265",
+    "model_number": "AHD18",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Glory Mix"
+  },
+  {
+    "sku": "010401AE000220",
+    "model_number": "AHD51",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Pocket Pro"
+  },
+  {
+    "sku": "010401AB000278",
+    "model_number": "AHD51",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Pocket Neo"
+  },
+  {
+    "sku": "010401AA000278",
+    "model_number": "AHD51",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Pocket Neo"
+  },
+  {
+    "sku": "010401AA000458",
+    "model_number": "AHD51",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Pocket Pro 2"
+  },
+  {
+    "sku": "010401AB000459",
+    "model_number": "AHD51",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Pocket Neo 2"
+  },
+  {
+    "sku": "010401AA000459",
+    "model_number": "AHD51",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Pocket Neo 2"
+  },
+  {
+    "sku": "010401AA000408",
+    "model_number": "AHD6A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Glory Combo"
+  },
+  {
+    "sku": "01040100000102",
+    "model_number": "AHD6A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Glory Combo"
+  },
+  {
+    "sku": "010401AA000209",
+    "model_number": "AHD9",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Miracle"
+  },
+  {
+    "sku": "010401AA000406",
+    "model_number": "AHG11A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Mini Flow"
+  },
+  {
+    "sku": "010401AB000406",
+    "model_number": "AHG11A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Mini Flow"
+  },
+  {
+    "sku": "010401AC000406",
+    "model_number": "AHG11A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Mini Flow"
+  },
+  {
+    "sku": "010401AA000308",
+    "model_number": "AHG11A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Mini"
+  },
+  {
+    "sku": "010401AC000308",
+    "model_number": "AHG11A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Mini"
+  },
+  {
+    "sku": "010404AD000011",
+    "model_number": "AHR01",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Nova"
+  },
+  {
+    "sku": "010401AA000437",
+    "model_number": "AHX01B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Miracle Essence"
+  },
+  {
+    "sku": "010401AA000335",
+    "model_number": "AHX30",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Miracle Pro"
+  },
+  {
+    "sku": "010403AB000057",
+    "model_number": "AMA10A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aero Straight Pro"
+  },
+  {
+    "sku": "010401AA000250",
+    "model_number": "AMF18A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Air Style Pro"
+  },
+  {
+    "sku": "010403AB000071",
+    "model_number": "AMF18A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Airstyle Era 2"
+  },
+  {
+    "sku": "010403AA000032",
+    "model_number": "AMF18A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Air Style Pro"
+  },
+  {
+    "sku": "010403AA000046",
+    "model_number": "AMF18A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Airstyle Era"
+  },
+  {
+    "sku": "010403AA000075",
+    "model_number": "AMF18A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Air Style Pro 2"
+  },
+  {
+    "sku": "010403AA000073",
+    "model_number": "AMF18A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Air Style Pro 2"
+  },
+  {
+    "sku": "010406AD000001",
+    "model_number": "AS01A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "S7"
+  },
+  {
+    "sku": "010406AC000013",
+    "model_number": "AS03A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "S9 Pro"
+  },
+  {
+    "sku": "010406AC000012",
+    "model_number": "AS03A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "S9"
+  },
+  {
+    "sku": "010704AA000013",
+    "model_number": "b2434b0401n",
+    "manufacturer": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "product_name": "HZ60 Pro"
+  },
+  {
+    "sku": "010704P0000069",
+    "model_number": "b2519x0700n",
+    "manufacturer": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "product_name": "VZ40 Pro"
+  },
+  {
+    "sku": "011702P0000005",
+    "model_number": "B711EU",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "NAVO Smart Lock E10"
+  },
+  {
+    "sku": "011703P0000010",
+    "model_number": "C021",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Indoor lighting-P11"
+  },
+  {
+    "sku": "011601AB000017",
+    "model_number": "CVF16A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "FP10"
+  },
+  {
     "sku": "011603AB000002",
     "model_number": "CVF22A",
-    "manufacturer": "dreame-trading-tianjin-co-ltd"
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "MF10"
+  },
+  {
+    "sku": "011605AA000002",
+    "model_number": "CVF36A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "DD20"
+  },
+  {
+    "sku": "011601AC000002",
+    "model_number": "CVF61A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "AP10"
+  },
+  {
+    "sku": "011602AC000001",
+    "model_number": "CVF70A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "SF25"
+  },
+  {
+    "sku": "011602AA000002",
+    "model_number": "CVF70B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "SF25 WIFI"
+  },
+  {
+    "sku": "010701P0001018",
+    "model_number": "d4eua",
+    "manufacturer": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "product_name": "DZ401Pro"
+  },
+  {
+    "sku": "011303P0001040",
+    "model_number": "DRB400WMBCEU",
+    "manufacturer": "nanjing-ice-krypton-technology-co-ltd",
+    "product_name": "Combi 60 1.85M-C"
+  },
+  {
+    "sku": "011303P0001039",
+    "model_number": "DRB400WMBDEU",
+    "manufacturer": "nanjing-ice-krypton-technology-co-ltd",
+    "product_name": "Combi 60 1.85M-D"
+  },
+  {
+    "sku": "011303P0001042",
+    "model_number": "DRB450WMBCEU",
+    "manufacturer": "nanjing-ice-krypton-technology-co-ltd",
+    "product_name": "Combi 60 2.01M-C"
+  },
+  {
+    "sku": "011303P0001041",
+    "model_number": "DRB450WMBDEU",
+    "manufacturer": "nanjing-ice-krypton-technology-co-ltd",
+    "product_name": "Combi 60 2.01M-D"
+  },
+  {
+    "sku": "01130300001015",
+    "model_number": "DRC560WMXEEUP",
+    "manufacturer": "nanjing-ice-krypton-technology-co-ltd",
+    "product_name": "FizzFreshCube 90"
+  },
+  {
+    "sku": "01130300001016",
+    "model_number": "DRC560WMXEEUP",
+    "manufacturer": "nanjing-ice-krypton-technology-co-ltd",
+    "product_name": "FizzFreshFD 90"
+  },
+  {
+    "sku": "011301P0001074",
+    "model_number": "DWF09M70DAEU",
+    "manufacturer": "nexchip-puretech-nanjing-co-ltd",
+    "product_name": "P5-9KG"
+  },
+  {
+    "sku": "011301P0001115",
+    "model_number": "DWF09S50WAEU",
+    "manufacturer": "nexchip-puretech-nanjing-co-ltd",
+    "product_name": "S-Ultra-9kg"
+  },
+  {
+    "sku": "011301P0001112",
+    "model_number": "DWF10S60WAEU",
+    "manufacturer": "nexchip-puretech-nanjing-co-ltd",
+    "product_name": "S-Ultra-10kg"
+  },
+  {
+    "sku": "011301P0001121",
+    "model_number": "DWF11L90TAEU",
+    "manufacturer": "nexchip-puretech-nanjing-co-ltd",
+    "product_name": "Washer-L9-11KG"
+  },
+  {
+    "sku": "011301P0001080",
+    "model_number": "DWIP7GAEU",
+    "manufacturer": "nexchip-puretech-nanjing-co-ltd",
+    "product_name": "Steam Iron-P7"
+  },
+  {
+    "sku": "010710P0000001",
+    "model_number": "FCM30",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "FCM30 Ecceluxe™️ Slim"
+  },
+  {
+    "sku": "010710P0000002",
+    "model_number": "FCM60",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "FCM60 Ecceluxe™️ Master"
+  },
+  {
+    "sku": "010903AA000005",
+    "model_number": "GCDJ2419",
+    "manufacturer": "chuangqian-mingjing-suzhou-technology-co-ltd",
+    "product_name": "C1"
+  },
+  {
+    "sku": "010903AA000017",
+    "model_number": "GCJZ2419",
+    "image_search_term": "GCDJ2419",
+    "manufacturer": "chuangqian-mingjing-suzhou-technology-co-ltd",
+    "product_name": "C1 Station"
+  },
+  {
+    "sku": "011101AA000274",
+    "model_number": "HHR20A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "G10 Pro"
+  },
+  {
+    "sku": "011101AA000091",
+    "model_number": "HHR25B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H12 Pro Ultra"
+  },
+  {
+    "sku": "011101AA000064",
+    "model_number": "HHR27C",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H13 Pro"
+  },
+  {
+    "sku": "011101AA000269",
+    "model_number": "HHR30E",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H14 AE"
+  },
+  {
+    "sku": "011101AA000143",
+    "model_number": "HHR31A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H14 Pro"
+  },
+  {
+    "sku": "011110AA000029",
+    "model_number": "HHR32A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "T12 Pro"
+  },
+  {
+    "sku": "011101AA000202",
+    "model_number": "HHR44A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H12 Pro FlexReach"
+  },
+  {
+    "sku": "011110AA000027",
+    "model_number": "HHR45B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H15 Heat"
+  },
+  {
+    "sku": "011101AA000185",
+    "model_number": "HHR46A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H15 Pro"
+  },
+  {
+    "sku": "011101AA000278",
+    "model_number": "HHR46B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H15S"
+  },
+  {
+    "sku": "011101AA000305",
+    "model_number": "HHR46D",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H15 Pro FoamWash"
+  },
+  {
+    "sku": "011101AA000225",
+    "model_number": "HHR48A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H15 Pro Heat"
+  },
+  {
+    "sku": "011110AA000077",
+    "model_number": "HHR58A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "T16 Pro Heat"
+  },
+  {
+    "sku": "011110AA000045",
+    "model_number": "HHR58C",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "T14 Pro"
+  },
+  {
+    "sku": "011101AA000337",
+    "model_number": "HHV25B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H14 Dual"
+  },
+  {
+    "sku": "011110AA000070",
+    "model_number": "HHV32E",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "T16 Pro Steam"
+  },
+  {
+    "sku": "011101AA000263",
+    "model_number": "HHV46B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "H15 Mix"
+  },
+  {
+    "sku": "011113AA000006",
+    "model_number": "HNR27A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "N20 Steam"
+  },
+  {
+    "sku": "011303P0001025",
+    "model_number": "IB-50",
+    "manufacturer": "nanjing-ice-krypton-technology-co-ltd",
+    "product_name": "Bullet Ice"
+  },
+  {
+    "sku": "011302P0001156",
+    "model_number": "KY-20(A)/PWIND10-EU-W",
+    "manufacturer": "kong-qi-ling-dong-technology-suzhou-co-ltd",
+    "product_name": "Portable AC 7K"
+  },
+  {
+    "sku": "011302P0001155",
+    "model_number": "KY-20(A)/PWIND11-EU-W",
+    "manufacturer": "kong-qi-ling-dong-technology-suzhou-co-ltd",
+    "product_name": "Portable AC 7K"
+  },
+  {
+    "sku": "011302P0001158",
+    "model_number": "KY-26(A)/PWIND10-EU-W",
+    "manufacturer": "kong-qi-ling-dong-technology-suzhou-co-ltd",
+    "product_name": "Portable AC 9K"
+  },
+  {
+    "sku": "011302P0001157",
+    "model_number": "KY-26(A)/PWIND11-EU-W",
+    "manufacturer": "kong-qi-ling-dong-technology-suzhou-co-ltd",
+    "product_name": "Portable AC 9K"
+  },
+  {
+    "sku": "010712P0000007",
+    "model_number": "MX60",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "BioKnead™ Stand Mixer"
+  },
+  {
+    "sku": "010704P0000068",
+    "model_number": "oz4p01odeu",
+    "manufacturer": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "product_name": "EZ60 Pro"
+  },
+  {
+    "sku": "010714P0000014",
+    "model_number": "PB10",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "PortFresh™ Portable Blender"
+  },
+  {
+    "sku": "010714P0000003",
+    "model_number": "PB10",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "PortFresh™ Portable Blender"
+  },
+  {
+    "sku": "010714P0000004",
+    "model_number": "PB10",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "PortFresh™ Portable Blender"
+  },
+  {
+    "sku": "010714P0000002",
+    "model_number": "PB70",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "BlendLogic™ Power Blender"
+  },
+  {
+    "sku": "010714P0000005",
+    "model_number": "PB70",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "BlendLogic™ Power Blender"
+  },
+  {
+    "sku": "010902AA000008",
+    "model_number": "PIXZ4110",
+    "manufacturer": "quilo-technology-jiaxing-co-ltd",
+    "product_name": "Z1 Pro"
+  },
+  {
+    "sku": "010902AA000009",
+    "model_number": "PIXZ4111",
+    "manufacturer": "quilo-technology-jiaxing-co-ltd",
+    "product_name": "Z1"
+  },
+  {
+    "sku": "010902AA000003",
+    "model_number": "PNUJ4110",
+    "manufacturer": "quilo-technology-jiaxing-co-ltd",
+    "product_name": "J1"
+  },
+  {
+    "sku": "010707AA000048",
+    "model_number": "PT60",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Tasti™AirF"
+  },
+  {
+    "sku": "010204AA001104",
+    "model_number": "RAW11",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "上下水模块欧美版——X50sUltra/X60ProUltra"
+  },
+  {
+    "sku": "010204AA001273",
+    "model_number": "RAW13",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "上下水模块欧美版——MatriX10 Pro/X60ProUltraMatrix"
+  },
+  {
+    "sku": "010204AA000655",
+    "model_number": "RAW7",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "上下水模块欧美版-X50Ultra"
+  },
+  {
+    "sku": "010204AA001008",
+    "model_number": "RAW8",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "上下水模块欧美版——Roller&Track"
+  },
+  {
+    "sku": "010204AA001100",
+    "model_number": "RAW9",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "上下水模块欧美版——MatriX10 Ultra"
+  },
+  {
+    "sku": "010201AA000296",
+    "model_number": "RLD32GD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D10 Plus Gen2"
+  },
+  {
+    "sku": "010204AA000352",
+    "model_number": "RLD34GA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D9 Max Gen2"
+  },
+  {
+    "sku": "010201AA000733",
+    "model_number": "RLD35GA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20"
+  },
+  {
+    "sku": "010201AA000758",
+    "model_number": "RLD35GA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20"
+  },
+  {
+    "sku": "010201AA000552",
+    "model_number": "RLD35GA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20"
+  },
+  {
+    "sku": "010201AA000551",
+    "model_number": "RLD35GA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20"
+  },
+  {
+    "sku": "010201AA000735",
+    "model_number": "RLD43SD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20 Pro Plus"
+  },
+  {
+    "sku": "010201AA000732",
+    "model_number": "RLD43SD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20 Pro Plus"
+  },
+  {
+    "sku": "010202AA000078",
+    "model_number": "RLD43SD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20 Pro Plus"
+  },
+  {
+    "sku": "010202AA000069",
+    "model_number": "RLD43SD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20 Pro Plus"
+  },
+  {
+    "sku": "010204AA001342",
+    "model_number": "RLF41GD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20 Air Plus"
+  },
+  {
+    "sku": "010204AA001340",
+    "model_number": "RLF41GD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "D20 Air Plus"
+  },
+  {
+    "sku": "010201AA000837",
+    "model_number": "RLH31CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua10 Roller"
+  },
+  {
+    "sku": "010201AA000663",
+    "model_number": "RLH31CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua10 Roller"
+  },
+  {
+    "sku": "010201AA000714",
+    "model_number": "RLH71DE-1",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua10 Ultra Roller Complete"
+  },
+  {
+    "sku": "010201AA000706",
+    "model_number": "RLH71DE-1",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua10 Ultra Roller Complete"
+  },
+  {
+    "sku": "01020100000191",
+    "model_number": "RLL11GC",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L10 Prime"
+  },
+  {
+    "sku": "010204AA000801",
+    "model_number": "RLL32SE-1",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L10s Ultra Gen2"
+  },
+  {
+    "sku": "010201AA000266",
+    "model_number": "RLL42SD",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L10s Plus"
+  },
+  {
+    "sku": "010201AA000583",
+    "model_number": "RLL42SDA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L10s Pro Gen3"
+  },
+  {
+    "sku": "010201AA000856",
+    "model_number": "RLL42SDA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L10s Pro Gen3"
+  },
+  {
+    "sku": "010201AA000273",
+    "model_number": "RLL42SDA",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L10s Pro Gen2"
+  },
+  {
+    "sku": "010204AA001288",
+    "model_number": "RLL51SE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L50 Ultra AE"
+  },
+  {
+    "sku": "010204AA001349",
+    "model_number": "RLL51SE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L50 Ultra AE"
+  },
+  {
+    "sku": "010204AA001151",
+    "model_number": "RLL53SE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L10s Ultra Gen3 Kit"
+  },
+  {
+    "sku": "010204AA000500",
+    "model_number": "RLL74CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L40s Pro Ultra"
+  },
+  {
+    "sku": "010204AA000502",
+    "model_number": "RLL74CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L40s Pro Ultra"
+  },
+  {
+    "sku": "010204AA000757",
+    "model_number": "RLL77SE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L40 Ultra AE"
+  },
+  {
+    "sku": "010204AA000830",
+    "model_number": "RLL77SE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L40 Ultra AE"
+  },
+  {
+    "sku": "010204AA000583",
+    "model_number": "RLL84CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L50 Pro Ultra"
+  },
+  {
+    "sku": "010204AA001289",
+    "model_number": "RLL88HE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L50s Pro Ultra"
+  },
+  {
+    "sku": "010204AA001316",
+    "model_number": "RLL88HE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L50s Pro Ultra"
+  },
+  {
+    "sku": "010204AA001279",
+    "model_number": "RLM61HE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Matrix10 Pro"
+  },
+  {
+    "sku": "010204AA001487",
+    "model_number": "RLM61HE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Matrix10 Pro"
+  },
+  {
+    "sku": "010204AA001475",
+    "model_number": "RLM92DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Matrix"
+  },
+  {
+    "sku": "010201AA000642",
+    "model_number": "RLR81CE-1",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua10 Ultra Track Complete"
+  },
+  {
+    "sku": "010201AA000641",
+    "model_number": "RLR81CE-1",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua10 Ultra Track Complete"
+  },
+  {
+    "sku": "010204AA000431",
+    "model_number": "RLX53SE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L40 Ultra"
+  },
+  {
+    "sku": "010204AA001195",
+    "model_number": "RLX85CE-4",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X50 Ultra Complete"
+  },
+  {
+    "sku": "010204AA001187",
+    "model_number": "RLX85CE-4",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X50 Ultra Complete"
   },
   {
     "sku": "010204AA000603",
     "model_number": "RLX86CE-1",
-    "manufacturer": "dreame-trading-tianjin-co-ltd"
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X50 Master"
+  },
+  {
+    "sku": "010204AA001212",
+    "model_number": "RLX95CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Matrix10 Ultra"
+  },
+  {
+    "sku": "010204AA001202",
+    "model_number": "RLX95CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Matrix10 Ultra"
+  },
+  {
+    "sku": "010204AB000840",
+    "model_number": "RLX95CE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Matrix10 Ultra"
+  },
+  {
+    "sku": "010204AA001424",
+    "model_number": "RLX96DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Complete"
+  },
+  {
+    "sku": "010204AA000893",
+    "model_number": "RVX71DE-1",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Cyber10 Ultra"
+  },
+  {
+    "sku": "010703AA000004",
+    "model_number": "sgs81z6ptdeu",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "OZ60 Pro"
+  },
+  {
+    "sku": "010715P0001001",
+    "model_number": "TA60",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Toaster TA60"
+  },
+  {
+    "sku": "010715P0001002",
+    "model_number": "TA60",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Toaster TA60"
+  },
+  {
+    "sku": "010101AA000558",
+    "model_number": "VRV31E",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "R20 Slim"
+  },
+  {
+    "sku": "010101AB000596",
+    "model_number": "VRV73H",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "R20 Pro"
+  },
+  {
+    "sku": "010101AB000579",
+    "model_number": "VRV80A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "R10s Lite"
+  },
+  {
+    "sku": "01010100000426",
+    "model_number": "VTV22B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "R10"
+  },
+  {
+    "sku": "010101AA000467",
+    "model_number": "VTV41B",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "R10 Pro"
+  },
+  {
+    "sku": "010101AA000433",
+    "model_number": "VTV97A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "R20"
+  },
+  {
+    "sku": "010101AA000560",
+    "model_number": "VVV21A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "V30"
+  },
+  {
+    "sku": "010101AA000561",
+    "model_number": "VVV21D",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "V20"
+  },
+  {
+    "sku": "010101AD000561",
+    "model_number": "VVV56C",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "V20 Pro"
+  },
+  {
+    "sku": "010101AC000608",
+    "model_number": "VXV17A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua Air"
+  },
+  {
+    "sku": "010101AA000608",
+    "model_number": "VXV17A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Aqua Air"
+  },
+  {
+    "sku": "010101AA000540",
+    "model_number": "VZV11A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Z10"
+  },
+  {
+    "sku": "010101AA000540",
+    "model_number": "VZV11A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Z10"
+  },
+  {
+    "sku": "010101AB000469",
+    "model_number": "VZV17A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Z30"
+  },
+  {
+    "sku": "010101AG000471",
+    "model_number": "VZV22A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Z20"
+  },
+  {
+    "sku": "010101AD000537",
+    "model_number": "VZV23A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "R20 SE"
+  },
+  {
+    "sku": "010101AC000595",
+    "model_number": "VZV66C",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Z30 Pro Aqua"
+  },
+  {
+    "sku": "010101AF000469",
+    "model_number": "VZVZ23A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Z30"
+  },
+  {
+    "sku": "010701AA000028",
+    "model_number": "z4eua",
+    "manufacturer": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "product_name": "DZ40 Pro"
+  },
+  {
+    "sku": "010701P0001016",
+    "model_number": "z6eub",
+    "manufacturer": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "product_name": "DZ60 Pro"
+  },
+  {
+    "sku": "010701AA000023",
+    "model_number": "z6eub",
+    "manufacturer": "zhiyue-youchuang-technology-suzhou-co-ltd",
+    "product_name": "DZ60 Pro"
+  },
+  {
+    "sku": "010702AA000035",
+    "model_number": "ZJM50-C10",
+    "manufacturer": "dreame-innovation-technology-suzhou-co-ltd",
+    "product_name": "C10"
+  },
+  {
+    "sku": "010204AA001570",
+    "model_number": "RLM92DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Matrix"
+  },
+  {
+    "sku": "010201AA001141",
+    "model_number": "RLX96DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Complete"
+  },
+  {
+    "sku": "010204AA001620",
+    "model_number": "RLX96DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Complete"
+  },
+  {
+    "sku": "010201AA001143",
+    "model_number": "RLX97DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X61 Pro Ultra Complete"
+  },
+  {
+    "sku": "010201AA001143",
+    "model_number": "RLX97DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X61 Pro Ultra Complete"
   }
+
 ]
