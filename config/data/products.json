@@ -466,6 +466,7 @@
     "manufacturer": "dreame-trading-tianjin-co-ltd",
     "product_name": "H14 Pro"
   },
+
   {
     "sku": "011110AA000029",
     "model_number": "HHR32A",
@@ -845,6 +846,12 @@
     "product_name": "L40 Ultra AE"
   },
   {
+    "sku": "010204AA000830",
+    "model_number": "RLL77SE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "L40 Ultra AE RE white"
+  },
+  {
     "sku": "010204AA000583",
     "model_number": "RLL84CE",
     "manufacturer": "dreame-trading-tianjin-co-ltd",
@@ -879,6 +886,18 @@
     "model_number": "RLM92DE",
     "manufacturer": "dreame-trading-tianjin-co-ltd",
     "product_name": "X60 Pro Ultra Matrix"
+  },
+  {
+    "sku": "010204AA001664",
+    "model_number": "RLM92DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Matrix Vision"
+  },
+  {
+    "sku": "010204AA001466",
+    "model_number": "RLM92DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Matrix Grigis"
   },
   {
     "sku": "010201AA000642",
@@ -1055,6 +1074,12 @@
     "product_name": "Z20"
   },
   {
+    "sku": "010101AB000471",
+    "model_number": "VZV22A",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "Z20"
+  },
+  {
     "sku": "010101AD000537",
     "model_number": "VZV23A",
     "manufacturer": "dreame-trading-tianjin-co-ltd",
@@ -1109,6 +1134,18 @@
     "product_name": "X60 Pro Ultra Complete"
   },
   {
+    "sku": "010201AA001141",
+    "model_number": "RLX96DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Complete"
+  },
+  {
+    "sku": "010204AA001620",
+    "model_number": "RLX96DE",
+    "manufacturer": "dreame-trading-tianjin-co-ltd",
+    "product_name": "X60 Pro Ultra Complete"
+  },
+  {
     "sku": "010204AA001620",
     "model_number": "RLX96DE",
     "manufacturer": "dreame-trading-tianjin-co-ltd",
@@ -1126,5 +1163,4 @@
     "manufacturer": "dreame-trading-tianjin-co-ltd",
     "product_name": "X61 Pro Ultra Complete"
   }
-
 ]
